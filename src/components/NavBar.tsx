@@ -30,21 +30,21 @@ export default function NavBar() {
 
   return (
     <nav
-      className={`fixed w-full z-20 top-0 start-0 transition-colors duration-300 ease-in-out ${
-        !scrolled || mobileMenuOpen ? 'bg-gray-300' : 'bg-transparent'
+      className={`fixed w-full z-20 top-0 start-0 transition-colors duration-800 ease-in-out ${
+        !scrolled || mobileMenuOpen ? 'bg-gray-200' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* 로고 */}
-        <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link href="/" className="md:flex hidden items-center space-x-3 rtl:space-x-reverse">
           <Image src="/next.svg" alt="Next.js Logo" width={80} height={20} className="h-7 w-auto" />
         </Link>
 
         {/* 우측 검색 & 메뉴 */}
-        <div className="flex items-center md:order-2">
+        <div className="flex items-center md:order-2 space-x-4">
           {/* 데스크탑 검색창 */}
-          <div className="relative md:block">
-            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <div className="relative rounded-xl border border-white/20 backdrop-blur-[2px] bg-white/10 md:block shadow-md ">
+            <div className="absolute inset-y-0 end-0 flex items-center pe-3 cursor-pointer">
               <svg className="w-4 h-4 text-gray-700" fill="none" viewBox="0 0 24 24">
                 <path
                   stroke="currentColor"
@@ -57,14 +57,12 @@ export default function NavBar() {
             <input
               type="text"
               className="
-                block w-full ps-9 pe-3 py-3
+                block w-full ps-5 pe-3 py-3
                 bg-neutral-secondary-medium
-                border border-default-medium
                 text-heading text-sm
-                rounded-xl
-                placeholder:text-body text-gray-500
+                placeholder:text-body
                 transition-all duration-200
-                focus:border-gray-500 focus:ring-1 focus:ring-gray-500 focus:outline-none
+                focus:border-gray-500 focus:ring-0 focus:ring-gray-500 focus:outline-none
               "
               placeholder="여기에 검색하세요!"
             />
@@ -73,7 +71,7 @@ export default function NavBar() {
 
           <div className="flex items-center space-x-4">
             <button
-              className="px-4 py-2 ml-4 rounded-xl bg-indigo-400 text-white hover:bg-indigo-500"
+              className="px-5 py-2.5 rounded-full text-sm font-medium text-gray-600 border border-white/20 backdrop-blur-[2px] shadow-md transition-all duration-300 ease-out bg-white/10 hover:-translate-y-0.5 active:scale-95"
               onClick={() => setAuthModalOpen(true)}
             >
               로그인 / 회원가입
@@ -110,7 +108,7 @@ export default function NavBar() {
           id="mobile-menu"
         >
           <ul
-            className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base
+            className="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-base
                        bg-neutral-secondary-soft md:flex-row md:space-x-8 md:mt-0 md:border-0
                        md:bg-neutral-primary"
           >
@@ -119,7 +117,7 @@ export default function NavBar() {
                 <Link
                   href={item.href}
                   className={`block py-2 text-xl px-3 rounded md:bg-transparent md:p-0
-                    transition-colors duration-500
+                    transition-colors duration-800
                     ${scrolled ? 'text-gray-400' : 'text-gray-600'}
                     hover:text-gray-800`}
                   onClick={() => setMobileMenuOpen(false)} // 클릭 시 메뉴 닫기
