@@ -1,4 +1,3 @@
-@ -0,0 +1,22 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
